@@ -175,17 +175,17 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
 
 void AccountListPage::on_actionAddOffline_triggered()
 {
-    if (!m_accounts->anyAccountIsValid()) {
+    if (!m_accounts->anyAccountIsValid()) { // This if statement can be completely removed, if you don't want this popup.
         QMessageBox::warning(
             this,
-            tr("Error"),
+            tr("Hmmm"),
             tr(
-                "You must add a Microsoft or Mojang account that owns Minecraft before you can add an offline account."
+                "You should probably add a legit account for online play."
                 "<br><br>"
-                "If you have lost your account you can contact Microsoft for support."
+                "Continuing..."
             )
         );
-        return;
+        // return; // This aborts the function prematurely if no legit account is found.
     }
 
     MinecraftAccountPtr account = OfflineLoginDialog::newAccount(
